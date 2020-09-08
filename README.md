@@ -38,7 +38,7 @@ bkup_rpimage.sh v1.0 by jinx
 * -L logfile writes rsync log to 'logfile'
 * -s define the size of the image file
 
-### File and folder exclusion from backup
+### File and folder exclusion from backup:
 
 You can exclude files and folders from backup by listing them at `exclude-files.txt` file. You can use wildcards.
 
