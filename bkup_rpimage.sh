@@ -13,6 +13,9 @@
 #  starting the backup. After the backup terminates normally you may restart all stopped
 #  applications or just reboot the system. 
 #
+# 2020-09-08 MrAndersonMD
+#        fix: File and folder exclusion based on external exclude-file.txt
+#
 # 2019-04-25 Dolorosus                  
 #        fix: Proper quoting of imagename. Now blanks in the imagename should be no longer 
 #             a problem.
@@ -35,7 +38,7 @@
 #
 #
 
-VERSION=v1.2
+VERSION=v1.3
 SDCARD=/dev/mmcblk0
 
 setup () {
