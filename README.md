@@ -46,7 +46,7 @@ You can exclude files and folders from backup by listing them at `exclude-file.t
 * `dir/*` backups a directory but excludes the content of it
 * `dir/**` backups a directory but excludes the content of it, including hidden files and folders
 * `*.jpg` exclude ALL jpg files
-* `file.ext` exclude an specific file
+* `file.ext` excludes a specific file
 
 ### Examples:
 
