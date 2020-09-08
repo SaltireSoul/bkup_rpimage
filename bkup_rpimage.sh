@@ -150,11 +150,11 @@ do_backup () {
     if mountpoint -q ${MOUNTDIR}; then
         trace "Starting rsync backup of / and /boot/ to ${MOUNTDIR}"
         if [ -n "${opt_log}" ]; then
-            rsync -aEvx --del --stats --log-file ${LOG}  /boot/ ${MOUNTDIR}/boot/
-            rsync -aEvx --del --stats --log-file ${LOG} --exclude={'tmp/**','proc/**','run/**','sys/**','mnt/**','var/swap','media/**','home/pi/.cache/**'} / ${MOUNTDIR}/
+            rsync -aEvx --del --stats --log-file ${LOG} --exclude-from='exclude-file.txt' /boot/ ${MOUNTDIR}/boot/
+            rsync -aEvx --del --stats --log-file ${LOG} --exclude-from='exclude-file.txt' / ${MOUNTDIR}/
         else
-            rsync -aEvx --del --stats /boot/ ${MOUNTDIR}/boot/
-            rsync -aEvx --del --stats --exclude={'tmp/**','proc/**','run/**','sys/**','mnt/**','var/swap','media/**','home/pi/.cache/**'} / ${MOUNTDIR}/
+            rsync -aEvx --del --stats --exclude-from='exclude-file.txt' /boot/ ${MOUNTDIR}/boot/
+            rsync -aEvx --del --stats --exclude-from='exclude-file.txt' / ${MOUNTDIR}/
         fi
     else
         trace "Skipping rsync since ${MOUNTDIR} is not a mount point"
