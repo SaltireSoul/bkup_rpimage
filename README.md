@@ -40,7 +40,7 @@ bkup_rpimage.sh v1.0 by jinx
 
 ### File and folder exclusion from backup:
 
-You can exclude files and folders from backup by listing them at `exclude-files.txt` file. You can use wildcards.
+You can exclude files and folders from backup by listing them at `exclude-file.txt` file. You can use wildcards.
 
 * `dir` excludes a directory
 * `dir/*` backups a directory but excludes the content of it
