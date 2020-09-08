@@ -1,0 +1,10 @@
+root/.cache
+root/.npm
+media
+tmp/**
+proc/**
+run/**
+sys/**
+mnt/**
+var/swap
+home/pi/.cache/**
