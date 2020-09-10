@@ -1,5 +1,3 @@
-root/.cache
-root/.npm
 media
 tmp/**
 proc/**
@@ -7,4 +5,8 @@ run/**
 sys/**
 mnt/**
 var/swap
+var/cache
+var/log
 home/pi/.cache/**
+root/.cache
+root/.npm
