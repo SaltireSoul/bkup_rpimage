@@ -188,7 +188,7 @@ do_umount () {
 # Compresses ${IMAGE} to ${IMAGE}.gz using a temp file during compression
 do_compress () {
     trace "Compressing ${IMAGE} to ${IMAGE}.gz"
-    pv -tpreb "${IMAGE}" | gzip > "${IMAGE}.gz.tmp"
+    pv -tpreb "${IMAGE}" | pigz > "${IMAGE}.gz.tmp"
     if [ -s "${IMAGE}.gz.tmp" ]; then
         mv -f "${IMAGE}.gz.tmp" "${IMAGE}.gz"
         if [ -n "${opt_delete}" ]; then
@@ -225,14 +225,14 @@ usage () {
         ${MYNAME} ${BOLD}start${NOATT} [-clzdf] [-L logfile] [-i sdcard] sdimage
         ${MYNAME} ${BOLD}mount${NOATT} [-c] sdimage [mountdir]
         ${MYNAME} ${BOLD}umount${NOATT} sdimage [mountdir]
-        ${MYNAME} ${BOLD}gzip${NOATT} [-df] sdimage
+        ${MYNAME} ${BOLD}pigz${NOATT} [-df] sdimage
 
         Commands:
 
             ${BOLD}start${NOATT}      starts complete backup of RPi's SD Card to 'sdimage'
             ${BOLD}mount${NOATT}      mounts the 'sdimage' to 'mountdir' (default: /mnt/'sdimage'/)
             ${BOLD}umount${NOATT}     unmounts the 'sdimage' from 'mountdir'
-            ${BOLD}gzip${NOATT}       compresses the 'sdimage' to 'sdimage'.gz
+            ${BOLD}pigz${NOATT}       compresses the 'sdimage' to 'sdimage'.gz
             ${BOLD}cloneid${NOATT}    clones the UUID/PTUUID from the actual disk to the image
             ${BOLD}shodf${NOATT}      shows allocation of the image
 
@@ -276,7 +276,7 @@ setup
 
 # Read the command from command line
 case ${1} in
-    start|mount|umount|gzip|cloneid|showdf)
+    start|mount|umount|pigz|cloneid|showdf) 
         opt_command=${1}
         ;;
     -h|--help)
@@ -328,7 +328,7 @@ if [ -z "${IMAGE}" ]; then
 fi
 
 # Check if sdimage exists
-if [ ${opt_command} = umount ] || [ ${opt_command} = gzip ]; then
+if [ ${opt_command} = umount ] || [ ${opt_command} = pigz ]; then
     if [ ! -f "${IMAGE}" ]; then
         error "${IMAGE} does not exist"
     fi
@@ -339,7 +339,7 @@ else
 fi
 
 # Check if we should compress and sdimage.gz exists
-if [ -n "${opt_compress}" ] || [ ${opt_command} = gzip ]; then
+if [ -n "${opt_compress}" ] || [ ${opt_command} = pigz ]; then
     if [ -s "${IMAGE}".gz ] && [ ! -n "${opt_force}" ]; then
         error "${IMAGE}.gz already exists\nUse -f to force overwriting"
     fi
@@ -392,8 +392,8 @@ trap ctrl_c SIGINT SIGTERM
 for c in dd losetup parted sfdisk partx mkfs.vfat mkfs.ext4 mountpoint rsync; do
     command -v ${c} >/dev/null 2>&1 || error "Required program ${c} is not installed"
 done
-if [ -n "${opt_compress}" ] || [ ${opt_command} = gzip ]; then
-    for c in pv gzip; do
+if [ -n "${opt_compress}" ] || [ ${opt_command} = pigz ]; then
+    for c in pv pigz; do
         command -v ${c} >/dev/null 2>&1 || error "Required program ${c} is not installed"
     done
 fi
@@ -427,7 +427,7 @@ case ${opt_command} in
     umount)
             do_umount
             ;;
-    gzip)
+    pigz)
             do_compress
             ;;
     cloneid)
