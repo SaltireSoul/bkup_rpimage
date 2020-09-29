@@ -4,6 +4,7 @@ Script to backup a Raspberry Pi disk image
 ## This project
 
 Forked from [lzkelley/bkup_rpimage](https://github.com/lzkelley/bkup_rpimage) on `29 September 2020`. 
+Merged commits from other forks (see **Changelog**)
 
 ## Origin
 
@@ -17,9 +18,12 @@ I copied the attached file on `Wed Feb 01, 2017` to this git repository.
 
 ## Changelog 
 
+> `Heredoc` (`cat << EOF`) instead of `echo -e` for better legibility
+- bkup_rpimage.sh v1.3 by slmingol 
+
 >Usage from Jinx and corrected the mistake of using rsync instead of start in the examples
 
-- bkup_rpimage.sh v2.0 by lzkelley
+- bkup_rpimage.sh v1.2 by lzkelley
 - bkup_rpimage.sh v1.0 by jinx
 
 ## How-to
