@@ -15,17 +15,6 @@ I found this via [a raspberrypi.stackexchange.com answer](http://raspberrypi.sta
 [The script was taken from here](https://www.raspberrypi.org/forums/viewtopic.php?p=638345#p638345), a post from `Mon Nov 10, 2014 7:05 am`.
 I copied the attached file on `Wed Feb 01, 2017` to this git repository.
 
-
-## Changelog 
-
-> `Heredoc` (`cat << EOF`) instead of `echo -e` for better legibility
-- bkup_rpimage.sh v1.3 by slmingol 
-
->Usage from Jinx and corrected the mistake of using rsync instead of start in the examples
-
-- bkup_rpimage.sh v1.2 by lzkelley
-- bkup_rpimage.sh v1.0 by jinx
-
 ## How-to
 ### Usage:
 

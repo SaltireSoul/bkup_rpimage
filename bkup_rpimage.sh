@@ -13,29 +13,8 @@
 #  starting the backup. After the backup terminates normally you may restart all stopped
 #  applications or just reboot the system.
 #
-# 2019-04-25 Dolorosus
-#        fix: Proper quoting of imagename. Now blanks in the imagename should be no longer
-#             a problem.
-#
-# 2019-03-19 Dolorosus
-#        fix: Define colors only if connected to a terminal.
-#             Thus output to file is no more cluttered.
-#
-# 2019-03-18 Dolorosus:
-#               add: exclusion of files below /tmp,/proc,/run,/sys and
-#                    also the swapfile /var/swap will be excluded from backup.
-#               add: Bumping the version to 1.1
-#
-# 2019-03-17 Dolorosus:
-#               add: -s parameter to create an image of a defined size.
-#               add: funtion cloneid to clone te UUID and the PTID from
-#                    the SDCARD to the image. So restore is working on
-#                    recent raspian versions.
-#
-#
-#
 
-VERSION=v1.2
+VERSION=v1.3
 SDCARD=/dev/mmcblk0
 
 setup () {
