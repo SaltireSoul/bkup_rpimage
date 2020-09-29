@@ -4,7 +4,7 @@ Script to backup a Raspberry Pi disk image
 ## This project
 
 Forked from [lzkelley/bkup_rpimage](https://github.com/lzkelley/bkup_rpimage) on `29 September 2020`. 
-Merged commits from other forks (see **Changelog**)
+Merged commits from other forks (see [**Changelog**](CHANGELOG.md))
 
 ## Origin
 
