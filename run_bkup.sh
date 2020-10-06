@@ -1,5 +1,5 @@
 #!/bin/sh
-# Script zum Starten des Backup-Scriptes "bkup_rpimage.sh" via einfachem Crontab-Eintrag
+# Script to start the backup script "bkup_rpimage.sh" via a simple crontab entry
 BACKUPDIR=/mnt/Backup/$(uname -n)/
 BACKUPFILE=$(uname -n)-$(date +%F).img
 
@@ -11,7 +11,7 @@ LOGFILE=$LOGDIR/rpimage.log
 if [ ! -d "$LOGFILE" ]; then
 
 	if [ ! -d "$LOGDIR" ]; then
-		echo "LOGDIR not existant, creating $LOGDIR"
+		echo "$LOGDIR doesn't exist, creating $LOGDIR"
 		mkdir -p -- "$LOGDIR"
 	fi
 	
@@ -21,11 +21,11 @@ else
 	echo "LOGFILE $LOGFILE was there..."
 fi
 
-# Target automounten lassen:
+# Let target auto mount
 if [ -d "$BACKUPDIR" ]; then
-	# script starten
+	# start script
 	/usr/bin/bkup_rpimage.sh start -czd $BACKUPDIR/$BACKUPFILE
 
 else
-	echo "Tried starting a backup, $BACKUPDIR not existant:	$(date)" >> $LOGFILE
+	echo "Failed starting a backup, $BACKUPDIR doesn't exist:	$(date)" >> $LOGFILE
 fi
