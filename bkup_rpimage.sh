@@ -164,6 +164,27 @@ do_umount () {
     losetup -d ${LOOPBACK}
 }
 
+# Shrink the ${IMAGE} to the minimal size possible
+do_shrink () {
+    trace "Shrinking "${IMAGE}
+
+    PARTITION_START=$(fdisk -lu "${IMAGE}" | grep Linux | awk '{print $2}')
+    PARTITION_SIZE=$(( $(fdisk -lu "${IMAGE}" | grep Linux | awk '{print $3}') * 1024 ))
+
+    trace "Attaching ${IMAGE} to ${LOOPBACK}"
+    losetup ${LOOPBACK} "${IMAGE}" -o $(($PARTITION_START * 512)) --sizelimit $PARTITION_SIZE
+    fsck -f ${LOOPBACK}
+    resize2fs -M ${LOOPBACK}
+    fsck -f ${LOOPBACK}
+
+    PARTITION_NEWSIZE=$( dumpe2fs ${LOOPBACK} 2>/dev/null | grep '^Block count:' | awk '{print $3}' )
+    PARTITION_NEWEND=$(( $PARTITION_START + ($PARTITION_NEWSIZE * 8) + 1 ))
+    losetup -d ${LOOPBACK}
+    echo -e "p\nd\n2\nn\np\n2\n$PARTITION_START\n$PARTITION_NEWEND\np\nw\n" | fdisk "${IMAGE}"
+    IMAGE_NEWSIZE=$((($PARTITION_NEWEND + 1) * 512))
+    truncate -s $IMAGE_NEWSIZE "${IMAGE}"
+}
+
 # Compresses ${IMAGE} to ${IMAGE}.gz using a temp file during compression
 do_compress () {
     trace "Compressing ${IMAGE} to ${IMAGE}.gz"
@@ -255,7 +276,7 @@ setup
 
 # Read the command from command line
 case ${1} in
-    start|mount|umount|pigz|cloneid|showdf) 
+    start|mount|umount|shrink|pigz|cloneid|showdf) 
         opt_command=${1}
         ;;
     -h|--help)
@@ -281,10 +302,11 @@ SIZE=$(blockdev --getsz $SDCARD)
 BLOCKSIZE=$(blockdev --getss $SDCARD)
 
 # Read the options from command line
-while getopts ":czdflL:i:s:" opt; do
+while getopts ":czrdflL:i:s:" opt; do
     case ${opt} in
         c)  opt_create=1;;
         z)  opt_compress=1;;
+        r)  opt_shrink=1;;
         d)  opt_delete=1;;
         f)  opt_force=1;;
         l)  opt_log=1;;
@@ -388,6 +410,9 @@ case ${opt_command} in
             do_backup
             do_showdf
             do_umount
+            if [ -n "${opt_shrink}" ]; then
+                do_shrink
+            fi
             if [ -n "${opt_compress}" ]; then
                 do_compress
             fi
@@ -405,6 +430,9 @@ case ${opt_command} in
             ;;
     umount)
             do_umount
+            ;;
+    shrink)
+            do_shrink
             ;;
     pigz)
             do_compress
