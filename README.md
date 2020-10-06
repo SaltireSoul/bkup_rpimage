@@ -21,14 +21,14 @@ I copied the attached file on `Wed Feb 01, 2017` to this git repository.
 * bkup_rpimage.sh start [-cslzdf] [-L logfile] sdimage
 * bkup_rpimage.sh mount [-c] sdimage [mountdir]
 * bkup_rpimage.sh umount sdimage [mountdir]
-* bkup_rpimage.sh gzip [-df] sdimage
+* bkup_rpimage.sh pigz [-df] sdimage
 
 ### Commands:
 
 * *start* - starts complete backup of RPi's SD Card to 'sdimage'
 * *mount* - mounts the 'sdimage' to 'mountdir' (default: /mnt/'sdimage'/)
 * *umount* - unmounts the 'sdimage' from 'mountdir'
-* *gzip* - compresses the 'sdimage' to 'sdimage'.gz
+* *pigz* - compresses the 'sdimage' to 'sdimage'.gz
 
 ### Options:
 
