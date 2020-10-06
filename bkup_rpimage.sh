@@ -218,7 +218,7 @@ ctrl_c () {
 usage () {
     cat <<-EOF
 
-    ${MYNAME} ${VERSION} by jinx
+    ${MYNAME} ${VERSION} by nelebh
 
     Usage:
 
@@ -233,6 +233,7 @@ usage () {
             ${BOLD}mount${NOATT}      mounts the 'sdimage' to 'mountdir' (default: /mnt/'sdimage'/)
             ${BOLD}umount${NOATT}     unmounts the 'sdimage' from 'mountdir'
             ${BOLD}pigz${NOATT}       compresses the 'sdimage' to 'sdimage'.gz
+            ${BOLD}shrink${NOATT}     compresses the 'sdimage' to 'sdimage'.gz
             ${BOLD}cloneid${NOATT}    clones the UUID/PTUUID from the actual disk to the image
             ${BOLD}shodf${NOATT}      shows allocation of the image
 
@@ -284,7 +285,7 @@ case ${1} in
         exit 0
         ;;
     --version)
-        trace "${MYNAME} ${VERSION} by jinx"
+        trace "${MYNAME} ${VERSION} by nelebh"
         exit 0
         ;;
     *)
