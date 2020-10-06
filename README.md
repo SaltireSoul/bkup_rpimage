@@ -1,5 +1,5 @@
 # bkup_rpimage
-Script to backup a Raspberry Pi disk image
+Script to backup a Raspberry Pi disk image. Forked from `lzkelley/bkup_rpimage`
 
 ## This project
 
@@ -39,6 +39,16 @@ I copied the attached file on `Wed Feb 01, 2017` to this git repository.
 * -f forces overwrite of 'sdimage'.gz if it exists
 * -L logfile writes rsync log to 'logfile'
 * -s define the size of the image file
+
+### File and folder exclusion from backup:
+
+You can exclude files and folders from backup by listing them at `exclude-file.txt` file. You can use wildcards.
+
+* `dir` excludes a directory
+* `dir/*` backups a directory but excludes the content of it
+* `dir/**` backups a directory but excludes the content of it, including hidden files and folders
+* `*.jpg` exclude ALL jpg files
+* `file.ext` excludes a specific file
 
 ### Examples:
 

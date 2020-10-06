@@ -1,5 +1,8 @@
  # Changelog 
 
+# v1.5 - MrAndersonMD
+
+-  File and folder exclusion based on external `exclude-file.txt` [Changes originally made by **MrAndersonMD**, in a fork from the original project](https://github.com/MrAndersonMD/bkup_rpimage)
 
 # v1.4 - eklex
 
