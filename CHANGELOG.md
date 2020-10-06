@@ -1,5 +1,11 @@
  # Changelog 
 
+
+# v1.4 - eklex
+
+-  Added the shrinking option [Changes originally made by **eklex**, in a fork from the original project](https://github.com/eklex/bkup_rpimage)
+
+
 # v1.3 - slmingol
 
 - `Heredoc` (`cat << EOF`) instead of `echo -e` for better legibility. [Changes originally made by **slmingol**, in a fork from the original project](https://github.com/slmingol/bkup_rpimage)

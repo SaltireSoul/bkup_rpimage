@@ -14,7 +14,7 @@
 #  applications or just reboot the system.
 #
 
-VERSION=v1.3
+VERSION=v1.4
 SDCARD=/dev/mmcblk0
 
 setup () {
