@@ -1,19 +1,25 @@
- # Changelog 
+# Changelog 
 
-# v1.5 - MrAndersonMD
+
+## v1.6 - veloc
+
+-  Added `run_bkup.sh` script for automating backups [Changes originally made by **veloc**, in a fork from the original project](https://github.com/veloc/bkup_rpimage)
+
+
+## v1.5 - MrAndersonMD
 
 -  File and folder exclusion based on external `exclude-file.txt` [Changes originally made by **MrAndersonMD**, in a fork from the original project](https://github.com/MrAndersonMD/bkup_rpimage)
 
-# v1.4 - eklex
+## v1.4 - eklex
 
 -  Added the shrinking option [Changes originally made by **eklex**, in a fork from the original project](https://github.com/eklex/bkup_rpimage)
 
 
-# v1.3 - slmingol
+## v1.3 - slmingol
 
 - `Heredoc` (`cat << EOF`) instead of `echo -e` for better legibility. [Changes originally made by **slmingol**, in a fork from the original project](https://github.com/slmingol/bkup_rpimage)
 
-# v1.2 - lzkelley
+## v1.2 - lzkelley
 
 [Original project on Github by **lzkelley**](https://github.com/lzkelley/bkup_rpimage), latest modification on `2019-05-08`, with these changes specified in the bkup_rpimage.sh file:
 
@@ -32,7 +38,7 @@
     - add: -s parameter to create an image of a   defined size.
     - add: funtion cloneid to clone te UUID and the PTID from the SDCARD to the image. So restore is working on recent raspian versions.
 
-# v1.0 - jinx
+## v1.0 - jinx
 
 - `2014-11-10` bkup_rpimage.sh v1.0 by **jinx** at the [Raspberry Pi Forum](https://www.raspberrypi.org/forums/viewtopic.php?p=638345#p638345)
 
