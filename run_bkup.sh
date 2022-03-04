@@ -1,6 +1,6 @@
 #!/bin/sh
 # Script to start the backup script "bkup_rpimage.sh" via a simple crontab entry
-BACKUPDIR=/mnt/Backup/$(uname -n)/
+BACKUPDIR=/mnt/backup/$(uname -n)
 BACKUPFILE=$(uname -n)-$(date +%F).img
 
 LOGDIR=/var/log/rpimage
